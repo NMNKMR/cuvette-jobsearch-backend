@@ -1,0 +1,27 @@
+{
+  "name": "job-search-backend",
+  "version": "1.0.0",
+  "description": "Cuvette Capstone Job Search Backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --env-file=.env ./src/index.js"
+  },
+  "keywords": [
+    "Express",
+    "Node",
+    "JWT",
+    "JobSearch",
+    "Backend",
+    "MongoDB"
+  ],
+  "author": "Naman Goel",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.0"
+  }
+}
