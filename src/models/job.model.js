@@ -1,0 +1,57 @@
+import mongoose, {Schema} from "mongoose";
+
+const jobSchema = new Schema(
+  {
+    company: {
+      type: String,
+      required: true,
+    },
+    logoUrl: {
+      type: String,
+    },
+    title: {
+      type: String,
+      required: true,
+      index: true,
+    },
+    monthlySalary: {
+      type: Number,
+    },
+    jobType: {
+      type: String,
+      enum: ["Full-time", "Part-time", "Contract", "Internship"],
+      required: true,
+    },
+    remoteOffice: {
+      type: String,
+      enum: ["Remote", "Office", "Hybrid"],
+      required: true,
+    },
+    location: {
+      type: String,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    aboutCompany: {
+      type: String,
+    },
+    skillsRequired: {
+      type: [{
+        type: String,
+        lowercase: true,
+      }],
+    },
+    information: {
+      type: String,
+    },
+    recruiter: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    }
+  },
+  { timestamps: true }
+);
+
+export const Job = mongoose.model("Job", jobSchema)
