@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { errorHandler } from "./middlewares/error.middleware.js";
 
 const app = express();
 
@@ -29,5 +30,9 @@ import userRouter from "./routes/user.routes.js";
 
 //Declaring Routes
 app.use("/api/v1/users", userRouter);
+
+
+//Error Handler Middleware
+app.use(errorHandler)
 
 export default app;

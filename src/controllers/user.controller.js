@@ -44,11 +44,12 @@ const loginUser = asyncHandler(async (req, res)=> {
     if(!isPasswordCorrect) throw new ApiError(401, "Invalid user credentials!")
 
     const accessToken = user.generateAccessToken();
-    delete user["password"];
+    const loggedInUser = {...user._doc}
+    delete loggedInUser.password;
 
     res.status(200).json(
         new ApiResponse(200, "User logged in successfully!", {
-            user,
+            user: loggedInUser,
             accessToken
         })
     )
