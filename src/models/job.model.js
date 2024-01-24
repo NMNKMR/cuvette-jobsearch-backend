@@ -19,7 +19,7 @@ const jobSchema = new Schema(
     },
     jobType: {
       type: String,
-      enum: ["Full-time", "Part-time", "Contract", "Internship"],
+      enum: ["Full time", "Part time", "Contract", "Internship"],
       required: true,
     },
     remoteOffice: {
@@ -42,13 +42,16 @@ const jobSchema = new Schema(
         type: String,
         lowercase: true,
       }],
+      index: true,
+      default: []
     },
     information: {
       type: String,
     },
     recruiter: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true
     }
   },
   { timestamps: true }

@@ -27,10 +27,11 @@ app.get("/api/v1/health", (_, res)=> {
 
 //Importing Routers
 import userRouter from "./routes/user.routes.js";
+import jobRouter from "./routes/job.routes.js";
 
 //Declaring Routes
 app.use("/api/v1/users", userRouter);
-
+app.use("/api/v1/jobs", jobRouter);
 
 //Error Handler Middleware
 app.use(errorHandler)
