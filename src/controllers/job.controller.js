@@ -74,7 +74,7 @@ const getAllJobPost = asyncHandler(async (req, res)=> {
     const jobs = await Job.find({
         title: {$regex: title, $options: "i"},
         ...filter
-    }).select("-description -aboutCompany -information -recruiter");
+    }).select("-description -aboutCompany -information -duration");
 
     res.status(200).json(
         new ApiResponse(200, "Jobs fetched successfully!", {jobs})

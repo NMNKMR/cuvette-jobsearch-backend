@@ -24,9 +24,10 @@ const registerUser = asyncHandler(async (req, res)=> {
     const user = await User.findById(createdUser._id).select("-password");
 
     if(!user) throw new ApiError(500, "Error occurred while registering the user!");
+    const accessToken = user.generateAccessToken();
 
     res.status(201).json(
-        new ApiResponse(201, "User registered successfully!", {user})
+        new ApiResponse(201, "User registered successfully!", {user, accessToken})
     )
     
 })
@@ -55,7 +56,14 @@ const loginUser = asyncHandler(async (req, res)=> {
     )
 })
 
+const getUser = asyncHandler(async (req, res)=> {
+    res.status(200).json(
+        new ApiResponse(200, "User validated successfully", {user: req.user})
+    )
+})
+
 export {
     registerUser,
     loginUser,
+    getUser,
 }

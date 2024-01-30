@@ -17,6 +17,9 @@ const jobSchema = new Schema(
     monthlySalary: {
       type: Number,
     },
+    duration: {
+      type: Number,
+    },
     jobType: {
       type: String,
       enum: ["Full time", "Part time", "Contract", "Internship"],
